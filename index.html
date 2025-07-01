@@ -12,20 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* Paleta de Cores (Preto e Roxo) */
         :root {
-            --cor-fundo: #000000;              /* Fundo totalmente preto */
-            --cor-container: #111111;         /* Cinza bem escuro para os blocos */
-            --cor-texto: #9933FF;             /* Roxo vibrante para textos e títulos */
-            --cor-texto-hover: #BB66FF;       /* Roxo mais claro para links */
-            --cor-borda: #330066;             /* Roxo escuro para bordas */
-            --cor-botao-texto: #ffffff;       /* Texto branco para botões de destaque */
-
-            --fonte-logo: 'Lilita One', sans-serif;
-            --fonte-corpo: 'Roboto', sans-serif;
+            --cor-fundo: #000000;
+            --cor-container: #111111;
+            --cor-texto: #9933FF;
+            --cor-texto-hover: #BB66FF;
+            --cor-borda: #330066;
+            --cor-botao-texto: #ffffff;
         }
 
-        /* Estilos Gerais */
         * {
             margin: 0;
             padding: 0;
@@ -35,7 +30,7 @@
         body {
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
-            font-family: var(--fonte-corpo);
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             padding: 1rem 0;
@@ -46,11 +41,10 @@
             max-width: 450px;
             background-color: var(--cor-fundo);
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(153, 51, 255, 0.2); /* Sombra roxa sutil */
+            box-shadow: 0 0 20px rgba(153, 51, 255, 0.2);
             overflow: hidden;
         }
 
-        /* Cabeçalho */
         header {
             padding: 1.5rem;
             text-align: center;
@@ -58,13 +52,12 @@
         }
 
         .logo {
-            font-family: var(--fonte-logo);
+            font-family: 'Lilita One', sans-serif;
             font-size: 3rem;
             color: var(--cor-texto);
             text-shadow: 0 0 10px var(--cor-texto-hover);
         }
 
-        /* Conteúdo Principal */
         main {
             padding: 1.5rem;
         }
@@ -75,9 +68,9 @@
             padding: 1rem;
             margin-bottom: 1.5rem;
         }
-
+        
         .secao h2 {
-            font-family: var(--fonte-logo);
+            font-family: 'Lilita One', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             border-bottom: 1px solid var(--cor-borda);
@@ -89,60 +82,10 @@
         .secao h2 .icone {
             margin-right: 0.75rem;
         }
-
-        .lista-jogos {
-            list-style: none;
-        }
-
-        .lista-jogos li a {
-            display: block;
-            padding: 0.9rem 0.5rem;
-            color: var(--cor-texto);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .lista-jogos li a:hover {
-            background-color: var(--cor-borda);
-            color: var(--cor-texto-hover);
-            transform: translateX(5px);
-        }
-
-        /* Seção de Downloads */
-        .botoes-download {
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-        }
-
-        .btn {
-            flex-grow: 1;
-            background-color: var(--cor-texto);
-            color: var(--cor-botao-texto);
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            border: 2px solid var(--cor-texto);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--cor-texto-hover);
-            border-color: var(--cor-texto-hover);
-        }
-
-        /* Barra de Busca */
+        
         .barra-busca {
             display: flex;
             align-items: center;
-            background-color: var(--cor-container);
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
         }
 
         .barra-busca input {
@@ -160,6 +103,46 @@
             opacity: 0.7;
         }
 
+        .lista-jogos {
+            list-style: none;
+        }
+        
+        .item-jogo .nome-jogo {
+            padding: 0.9rem 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+        }
+        
+        .item-jogo .nome-jogo:hover {
+            background-color: var(--cor-borda);
+            color: var(--cor-texto-hover);
+        }
+        
+        .link-container {
+            display: none; /* O container do link começa escondido */
+            padding: 0.5rem 0.5rem 1rem 0.5rem;
+            text-align: center;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background-color: var(--cor-texto);
+            color: var(--cor-botao-texto);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--cor-texto);
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--cor-texto-hover);
+        }
+
     </style>
 </head>
 <body>
@@ -174,40 +157,65 @@
             <div class="secao">
                 <div class="barra-busca">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" placeholder="Buscar em EmuSite...">
+                    <input type="search" id="caixaDeBusca" placeholder="Buscar em EmuSite...">
                 </div>
             </div>
 
             <div class="secao">
-                <h2><i class="fa-solid fa-star icone"></i> Populares</h2>
-                <ul class="lista-jogos">
-                    <li><a href="#">The Witcher 3: Wild Hunt</a></li>
-                    <li><a href="#">Red Dead Redemption 2</a></li>
-                    <li><a href="#">Grand Theft Auto V</a></li>
-                    <li><a href="#">Elden Ring</a></li>
-                    <li><a href="#">Stardew Valley</a></li>
-                </ul>
-            </div>
+                <h2><i class="fa-solid fa-gamepad icone"></i>Lista de Jogos</h2>
+                <ul class="lista-jogos" id="listaDeJogos">
+                    
+                    <li class="item-jogo">
+                        <div class="nome-jogo">The Witcher 3: Wild Hunt</div>
+                        <div class="link-container">
+                            <a href="#" class="btn-download">Fazer Download</a>
+                        </div>
+                    </li>
+                    
+                    <li class="item-jogo">
+                        <div class="nome-jogo">Red Dead Redemption 2</div>
+                        <div class="link-container">
+                            <a href="#" class="btn-download">Fazer Download</a>
+                        </div>
+                    </li>
 
-            <div class="secao">
-                <h2><i class="fa-solid fa-rocket icone"></i> Lançamentos</h2>
-                <ul class="lista-jogos">
-                    <li><a href="#">Hades II</a></li>
-                    <li><a href="#">Black Myth: Wukong</a></li>
-                    <li><a href="#">Silent Hill 2 Remake</a></li>
-                </ul>
-            </div>
+                    <li class="item-jogo">
+                        <div class="nome-jogo">Grand Theft Auto V</div>
+                        <div class="link-container">
+                            <a href="#" class="btn-download">Fazer Download</a>
+                        </div>
+                    </li>
 
-            <div class="secao">
-                 <h2><i class="fa-solid fa-download icone"></i> Download Exemplo</h2>
-                 <div class="botoes-download">
-                    <a href="#" class="btn">Opção 1</a>
-                    <a href="#" class="btn">Opção 2</a>
-                 </div>
+                    <li class="item-jogo">
+                        <div class="nome-jogo">Elden Ring</div>
+                        <div class="link-container">
+                            <a href="#" class="btn-download">Fazer Download</a>
+                        </div>
+                    </li>
+
+                    <li class="item-jogo">
+                        <div class="nome-jogo">Stardew Valley</div>
+                        <div class="link-container">
+                            <a href="#" class="btn-download">Fazer Download</a>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
         </main>
-
     </div>
 
-</body>
-</html>
+    <script>
+        // --- SCRIPT PARA BUSCA FUNCIONAL ---
+        const caixaDeBusca = document.getElementById('caixaDeBusca');
+        const listaDeJogos = document.getElementById('listaDeJogos');
+        const todosOsJogos = listaDeJogos.getElementsByClassName('item-jogo');
+
+        caixaDeBusca.addEventListener('keyup', function() {
+            const termoBusca = caixaDeBusca.value.toUpperCase();
+
+            for (let i = 0; i < todosOsJogos.length; i++) {
+                const jogo = todosOsJogos[i];
+                const nomeJogo = jogo.getElementsByClassName('nome-jogo')[0].textContent.toUpperCase();
+                
+                if (nomeJogo.includes(termoBusca)) {
